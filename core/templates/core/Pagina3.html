@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'core/https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous' %}">
+    <link rel="stylesheet" href="{% static 'core/CSS/StylePag3.css' %}">
+    <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
+    <title>>Cafeteria Duoc | Productos</title>
+  </head>
+  <style>
+  ::selection
+  {
+    color: #fff;
+    background: #A11BAF;
+  }
+
+  </style>
+  <body>
+    <div class="cont">
+      <header class="cabeza">
+        <div class="menu">
+          <nav>
+            <img src="{% static 'core/IMG/logo.png' %}" alt="">
+            <link href="{% static 'core/https://fonts.googleapis.com/css2?family=Oswald:wght@400;467&display=swap" rel="stylesheet' %}">
+            <a href="/">INICIO</a>
+            <a href="/pagina3">PRODUCTOS</a>
+            <a href="/pagina1">REGISTRO</a>
+            <a href="/pagina4">NOSOTROS</a>
+          </nav>
+        </div>
+      </header>
+      <div class="cont1">
+        <h1>NUESTROS PRODUCTOS</h1>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.97,33.05 C149.99,150.00 352.99,-35.03 500.84,66.61 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
+        </div>
+      </div>
+      <div class="titulo">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Fredoka+One&family=Lobster&display=swap" rel="stylesheet">
+        <h1> CARACTERISTICAS DE NUESTROS PRODUCTOS </h1>
+      </div>
+      <div class="med">
+        <img src="{% static 'core/IMG/medidas.png' %}" alt=""width="600"height="500">
+      </div>
+      <div class="pedido">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Fredoka+One&family=Lobster&display=swap" rel="">
+        <h1>LISTA DE PRECIOS</h1>
+        <table>
+          <tr>
+            <th> Nombre Cafe </th>
+            <th> Valor Cafe </th>
+            <th> Tamaño </th>
+            <th> Opciones </th>
+          </tr>
+
+          {% for c in cafe %}
+          <tr>
+            <td>{{ c.nombre_cafe }}</td>
+            <td>{{ c.valor }}</td>
+            <td>{{ c.tamaño }}</td>
+            <td><a href="{% url 'modificar' c.id %}">Modificar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+
+      <div class="med2">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Fredoka+One&family=Lobster&display=swap" rel="">
+        <h3>¡AGREGA UN CAFE!</h3>
+        <form action="" method="POST">
+          {% csrf_token %}
+          <table>
+            {{ form.as_table }}
+          </table>
+          <input type="reset" value="Limpiar">
+          <input type="submit" value="Guardar">
+
+        </form>
+        {{ mensaje }}
+
+      </div>
+
+      <div class="cont2">
+        <img src="{% static 'core/IMG/espres.png' %}"alt="">
+        <link href="{% static 'core/https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Fredoka+One&family=Lobster&display=swap" rel="stylesheet' %}">
+        <CENTER><h3>- Espresso/ Café solo -</h3>
+        <p align = justify>El café expreso (también llamado café exprés, express, espresso o solo) es una forma de preparación de café originada en Italia. ​ Debe su término a la obtención de esta bebida a través de una cafetera expreso. ​ Se caracteriza por su rápida preparación y por un sabor y textura más concentrados.</p>
+      </div>
+      <div class="cont3">
+        <img src="{% static 'core/IMG/capuchino.png' %}" alt="">
+        <CENTER><h3>- Capuchino -</h3>
+        <p align = justify>El capuchino​ (del italiano cappuccino) es una bebida nacida en Italia, preparada con café expreso y leche montada con vapor para otorgarle cremosidad.</p>
+      </div>
+      <div class="cont4">
+        <img src="{% static 'core/IMG/leche.png' %}" alt="">
+        <CENTER><h3>- Café au Lait -</h3>
+        <p align = justify>Café au lait es café con leche caliente agregada.</p>
+      </div>
+      <div class="cont5">
+        <img src="{% static 'core/IMG/latte.png' %}" alt="">
+        <CENTER><h3>- Caffe Latte -</h3>
+        <p align = justify>Caffe latte es una bebida de café hecha con espresso y leche al vapor.</p>
+      </div>
+      <div class="cont6">
+        <img src="{% static 'core/IMG/moka.png' %}" alt="">
+        <CENTER><h3>- Café Moca (Mokaccino) -</h3>
+        <p align = justify>Un café moca es una variante del café con leche. Como éste, suele llevar un tercio de expreso y dos tercios de leche vaporizada, pero se añade una parte de chocolate.</p>
+      </div>
+      <div class="cont7">
+        <img src="{% static 'core/IMG/caramel.png' %}" alt="">
+        <CENTER><h3>- Latte macchiato -</h3>
+        <p align = justify>El latte macchiato es una bebida preparada con leche y café expreso. Latte Macchiato significa en italiano simplemente ‘leche manchada’. El nombre hace referencia al modo de preparación, donde la leche queda «manchada» con el café añadido. </p>
+      </div>
+
+      <footer class="foot">
+        <a href="https://twitter.com/">TWITTER</a>
+        <a href="https://www.youtube.com/">YOUTUBE</a>
+        <a href="https://www.facebook.com/">FACEBOOK</a>
+      </footer>
+    </div>
+    <script src="{% static 'core/https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous' %}"></script>
+<script src="{% static 'core/https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous' %}"></script>
+<script src="{% static 'core/https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous' %}"></script>
+  </body>
+</html>

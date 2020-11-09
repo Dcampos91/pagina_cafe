@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'core/https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous' %}">
+    <link rel="stylesheet" href="{% static 'core/CSS/StylePag3.css' %}">
+    <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
+    <title>>Cafeteria Duoc | Modificar</title>
+  </head>
+  <style>
+  ::selection
+  {
+    color: #fff;
+    background: #A11BAF;
+  }
+
+  </style>
+  <body>
+    <div class="cont">
+      <header class="cabeza">
+        <div class="menu">
+          <nav>
+            <img src="{% static 'core/IMG/logo.png' %}" alt="">
+            <link href="{% static 'core/https://fonts.googleapis.com/css2?family=Oswald:wght@400;467&display=swap" rel="stylesheet' %}">
+            <a href="/">INICIO</a>
+            <a href="/pagina3">PRODUCTOS</a>
+            <a href="/pagina1">MODIFICAR</a>
+            <a href="/pagina4">NOSOTROS</a>
+          </nav>
+        </div>
+      </header>
+      <div class="cont1">
+        <h1>MODICAR CAFE</h1>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.97,33.05 C149.99,150.00 352.99,-35.03 500.84,66.61 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
+        </div>
+      </div>
+
+
+      <div class="med2">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Fredoka+One&family=Lobster&display=swap" rel="">
+        <h3>¡MODIFICA UN CAFE!</h3>
+        <form action="" method="POST">
+          {% csrf_token %}
+          <table>
+            {{ form.as_table }}
+          </table>
+          <input type="reset" value="Limpiar">
+          <input type="submit" value="Modificar">
+
+        </form>
+        {{ mensaje }}
+
+
+
+
+  </body>
+</html>

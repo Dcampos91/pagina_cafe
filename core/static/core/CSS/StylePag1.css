@@ -1,0 +1,23 @@
+.cont
+{
+  width: 90%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+}
+.cont .med2
+{
+  grid-column: 1/7;
+  background-color: #73421F;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #ccc;
+  color: #fff;
+  margin-right: 5px;
+  padding: 15px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.cont .med2:hover
+{
+  background: #7F4C26;
+}
