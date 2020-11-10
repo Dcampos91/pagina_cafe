@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Cafe, Cliente
 from .forms import CafeForm
 
@@ -11,7 +11,18 @@ def modificar(request, id):
     data ={
         'form':CafeForm(instance=cafe)
     }
+    if request.method == 'POST':
+        formulario = CafeForm(data=request.POST, instance=cafe)
+        if formulario.is_valid():
+            formulario.save()
+            data['mensaje'] = "Modificado Correctamente"
+            data['form'] = formulario
     return render(request,'core/modificar.html',data)
+
+def eliminar_cafe(request, id):
+    cafe = Cafe.objects.get(id=id)
+    cafe.delete()
+    return redirect(to="pagina3")
 
 def pagina2(request):
     return render(request,'core/Pagina2.html')

@@ -58,7 +58,9 @@
             <td>{{ c.nombre_cafe }}</td>
             <td>{{ c.valor }}</td>
             <td>{{ c.tamaño }}</td>
-            <td><a href="{% url 'modificar' c.id %}">Modificar</a>
+            <td>
+              <a href="{% url 'modificar' c.id %}">Modificar</a>
+              <a href="{% url 'eliminar_cafe' c.id %}">Eliminar</a>
             </td>
           </tr>
           {% endfor %}
