@@ -8,13 +8,16 @@
     <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
     <title>>Cafeteria Duoc | Productos</title>
   </head>
+  {% block javascript %}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="{% static 'core/js/confirmacion.js' %}"></script>
+  {% endblock %}
   <style>
   ::selection
   {
     color: #fff;
     background: #A11BAF;
   }
-
   </style>
   <body>
     <div class="cont">
@@ -60,7 +63,7 @@
             <td>{{ c.tamaño }}</td>
             <td>
               <a href="{% url 'modificar' c.id %}">Modificar</a>
-              <a href="{% url 'eliminar_cafe' c.id %}">Eliminar</a>
+              <a href="#" onclick="confirmarEliminacion({{c.id}})">Eliminar</a>
             </td>
           </tr>
           {% endfor %}
