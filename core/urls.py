@@ -1,5 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('cafe', CafeViewSet)
 
 urlpatterns = [
     path('', index,name="index"),
@@ -8,4 +12,5 @@ urlpatterns = [
     path('pagina2/', pagina2,name="pagina2"),
     path('pagina3/', pagina3,name="pagina3"),
     path('pagina4/', pagina4,name="pagina4"),
+    path('api/', include(router.urls)),
 ]

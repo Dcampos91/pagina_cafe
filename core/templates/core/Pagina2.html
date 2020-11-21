@@ -1,17 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Cafeteria Duoc | Iniciar sesion</title>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'core/https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous' %}">
+    <link rel="stylesheet" href="{% static 'core/CSS/StylePag3.css' %}">
     <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
-    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'core/CSS/StylePag2.css' %}" th:href="@{% static 'core/CSS/StylePag2.css' %}">
+    <title>>Cafeteria Duoc | Inicio secion</title>
+  </head>
 
-</head>
 <style>
 ::selection
 {
@@ -19,27 +16,37 @@ color: #fff;
 background: #A11BAF;
 }
 </style>
-<body>
-    <div class="modal-dialog text-center">
-        <div class="col-sm-8 main-section">
-            <div class="modal-content">
-                <div class="col-12 user-img">
-                    <img src="{% static 'core/IMG/user.png' %}" th:src="@{% static 'core/IMG/user.png' %}"/>
-                </div>
-                <form class="col-12" th:action="@{/login}" method="get">
-                    <div class="form-group" id="user-group">
-                        <input type="email" class="form-control" placeholder="CORREO" name="email"/>
-                    </div>
-                    <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="CLAVE" name="password"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
-                </form>
-                <div class="col-12 forgot">
-                    <a href="/pagina1.html">Crear una cuenta</a>
-                </div>
-            </div>
+  <body>
+    <div class="cont">
+      <header class="cabeza">
+        <div class="menu">
+          <nav>
+            <img src="{% static 'core/IMG/logo.png' %}" alt="">
+            <link href="{% static 'core/https://fonts.googleapis.com/css2?family=Oswald:wght@400;467&display=swap" rel="stylesheet' %}">
+            <a href="/">INICIO</a>
+            <a href="/pagina3">PRODUCTOS</a>
+            <a href="/pagina4">NOSOTROS</a>
+          </nav>
         </div>
+      </header>
+      <div class="cont1">
+        <h1>NUESTROS PRODUCTOS</h1>
+        <div class="wave" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-1.97,33.05 C149.99,150.00 352.99,-35.03 500.84,66.61 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #fff;"></path></svg>
+          
+        </div>
+      </div>
+      <div class="titulo">
+        <link href="https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Fredoka+One&family=Lobster&display=swap" rel="stylesheet">
+        <h1> CARACTERISTICAS DE NUESTROS PRODUCTOS </h1>
+      </div>
+
+
+      <footer class="foot">
+        <a href="https://twitter.com/">TWITTER</a>
+        <a href="https://www.youtube.com/">YOUTUBE</a>
+        <a href="https://www.facebook.com/">FACEBOOK</a>
+      </footer>
     </div>
-</body>
+
+  </body>
 </html>

@@ -19,6 +19,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('core.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('oauth/', include('social_django.urls', namespace='social')),
 ]
 
 admin.site.site_header = "Administración Cafe Duoc UC"

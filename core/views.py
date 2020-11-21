@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Cafe, Cliente
 from .forms import CafeForm
+from django.contrib.auth.decorators import login_required
+
+#rest_framework
+from rest_framework import viewsets
+from .serializers import CafeSerializer
 
 # Create your views here.
 def index(request):
@@ -26,7 +31,8 @@ def eliminar_cafe(request, id):
 
 def pagina2(request):
     return render(request,'core/Pagina2.html')
-
+#guardar cafe
+@login_required
 def pagina3(request):
     cafe = Cafe.objects.all()
     data = {
@@ -45,3 +51,8 @@ def pagina3(request):
 
 def pagina4(request):
     return render(request,'core/Pagina4.html')
+
+#resivir datos o hacer consulta
+class CafeViewSet(viewsets.ModelViewSet):
+    queryset = Cafe.objects.all()
+    serializer_class = CafeSerializer

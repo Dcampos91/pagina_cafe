@@ -26,6 +26,12 @@
             <a href="/">INICIO</a>
             <a href="/pagina3">PRODUCTOS</a>
             <a href="/pagina4">NOSOTROS</a>
+            {% if user.is_authenticated %}
+            <a href="#">USUARIO:  {{ user.username }}</a>
+            <a href="{% url 'logout' %}">CERRAR SESIÓN</a>
+            {% else %}
+            <a href="{% url 'login' %}">INICIAR SESIÓN</a>
+            {% endif %}
           </nav>
 
         </div>
