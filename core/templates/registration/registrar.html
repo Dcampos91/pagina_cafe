@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>REGISTRAR</title>
+  </head>
+  <body>
+    <h2>Registro de usuario</h2>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+
+      <input type="reset" value="Limpiar">
+      <input type="submit" value="Registrar">
+    </form>
+
+  </body>
+</html>

@@ -12,5 +12,6 @@ urlpatterns = [
     path('pagina2/', pagina2,name="pagina2"),
     path('pagina3/', pagina3,name="pagina3"),
     path('pagina4/', pagina4,name="pagina4"),
+    path('registro/', registro_usuario, name='registro_usuario'),
     path('api/', include(router.urls)),
 ]
