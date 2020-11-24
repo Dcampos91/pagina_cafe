@@ -1,4 +1,6 @@
 {% load static %}
+{% load pwa %}
+{% progressive_web_app_meta %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,6 +10,80 @@
     <link rel="stylesheet" href="{% static 'core/CSS/bootstrap.min.css' %}">
     <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
     <title>CAFETERIA DUOC</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAgRL3rzIhIUYD9M0D_MpLFTkZ6BZLtzp0",
+        authDomain: "cafeduoc2020.firebaseapp.com",
+        databaseURL: "https://cafeduoc2020.firebaseio.com",
+        projectId: "cafeduoc2020",
+        storageBucket: "cafeduoc2020.appspot.com",
+        messagingSenderId: "327542197525",
+        appId: "1:327542197525:web:253fa84115d26398732d1c"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      let messaging = firebase.messaging();
+
+      navigator.serviceWorker
+      .register('./serviceworker.js')
+      .then(function(register){
+
+        messaging.useServiceWorker(register);
+
+        //solicitamos permiso para recibir notificaciones
+        messaging.requestPermission()
+        .then(function(){
+          console.log("El usuario ha aceptado recibir notificaciones")
+          return messaging.getToken();
+        })
+        .then(function(token){
+           console.log(token);
+           fetch('guardar-token/',{
+             method:'post',
+             headers:{
+               'Content-Type':'application/json',
+               'Accept':'application/json'
+             },
+             body:JSON.stringify({
+               'token':token
+             })
+           })
+           .then(function(resultado){
+             console.log("se ha guardado el token")
+           })
+           .catch(function(e){
+             console.log("no se ha podido guardar el token")
+           })
+        })
+        .catch(function(e){
+           console.log("el usuario no ha aceptado")
+        })
+
+
+
+      })
+
+      messaging.onMessage(function(payload){
+        console.log("ha llegado notificacion")
+        let data = payload;
+        console.log(data);
+        let title =payload.notification.title;
+        let options = {
+          body: payload.notification.body,
+          icon: payload.notification.icon
+        }
+        let mensaje = new Notification(title, options);
+      });
+    </script>
   </head>
   <style>
 ::selection
@@ -31,7 +107,7 @@
             <a href="{% url 'logout' %}">CERRAR SESIÓN</a>
             {% else %}
             <a href="{% url 'login' %}">INICIAR SESIÓN</a>
-            <a href="{% url 'registro_usuario' %}">REGISTRAR</a>            
+            <a href="{% url 'registro_usuario' %}">REGISTRAR</a>
             {% endif %}
           </nav>
 

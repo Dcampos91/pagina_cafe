@@ -1,4 +1,7 @@
 {% load static %}
+{% load crispy_forms_tags %}
+{% load pwa %}
+{% progressive_web_app_meta %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -7,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'core/CSS/StylePag3.css' %}">
     <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
     <title>>Cafeteria Duoc | Productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   </head>
   {% block javascript %}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -47,7 +51,7 @@
       <div class="pedido">
         <link href="https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Fredoka+One&family=Lobster&display=swap" rel="">
         <h1>LISTA DE PRECIOS</h1>
-        <table>
+        <table class="table table-striped">
           <tr>
             <th> Nombre Cafe </th>
             <th> Valor Cafe </th>
@@ -74,11 +78,13 @@
         <h3>¡AGREGA UN CAFE!</h3>
         <form action="" method="POST">
           {% csrf_token %}
-          <table>
-            {{ form.as_table }}
-          </table>
-          <input type="reset" value="Limpiar">
-          <input type="submit" value="Guardar">
+
+            {{ form | crispy }}
+          <div class="float-right">
+            <input type="reset" value="Limpiar" class="btn btn-info">
+            <input type="submit" value="Guardar" class="btn btn-success">
+          </div>
+
 
         </form>
         {{ mensaje }}

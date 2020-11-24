@@ -3,18 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>REGISTRAR</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   </head>
   <body>
-    <h2>Registro de usuario</h2>
-    <form action="" method="POST">
-      {% csrf_token %}
-      <table>
-        {{ form.as_table }}
-      </table>
-
-      <input type="reset" value="Limpiar">
-      <input type="submit" value="Registrar">
-    </form>
-
+    {% load crispy_forms_tags %}
+    <div class="container">
+      <h2>Registro de usuario</h2>
+      <form action="" method="POST">
+        {% csrf_token %}
+          {{ form | crispy }}
+          <div class="float-right">
+            <input type="reset" value="Limpiar" class="btn btn-info">
+            <input type="submit" value="Registrar" class="btn btn-success">
+          </div>
+      </form>
+    </div>
   </body>
 </html>

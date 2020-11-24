@@ -14,4 +14,5 @@ urlpatterns = [
     path('pagina4/', pagina4,name="pagina4"),
     path('registro/', registro_usuario, name='registro_usuario'),
     path('api/', include(router.urls)),
+    path('guardar-token/', guardar_token, name='guardar_token'),
 ]

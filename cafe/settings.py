@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,8 +35,11 @@ INSTALLED_APPS = [
     'core',
     'rest_framework',
     'social_django',
+    'crispy_forms',
+    'pwa',
+    'fcm_django',
 ]
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -124,3 +128,19 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
+
+FCM_DJANGO_SETTINGS = {
+         # default: _('FCM Django')
+        "APP_VERBOSE_NAME": "cafeduoc",
+         # Your firebase API KEY
+        "FCM_SERVER_KEY": "",
+         # true if you want to have only one active device per registered user at a time
+         # default: False
+        "ONE_DEVICE_PER_USER": False,
+         # devices to which notifications cannot be sent,
+         # are deleted upon receiving error response from FCM
+         # default: False
+        "DELETE_INACTIVE_DEVICES": True,
+}
