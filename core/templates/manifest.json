@@ -1,0 +1,17 @@
+{
+  "short_name": "CafeDuoc",
+  "name": "Pagina de ventas CafeDuoc",
+  "start_url": " ",
+  "background_color": "#0598EC",
+  "theme_color": "#0598EC",
+  "orientation": "portrait-primary",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "static/core/IMG/logo.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    }
+
+  ]
+}

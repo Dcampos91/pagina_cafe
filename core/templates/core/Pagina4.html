@@ -6,61 +6,6 @@
     <link rel="stylesheet" href="{% static 'core/CSS/StylePag4.css' %}">
     <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
     <title>>Cafeteria Duoc | Sobre Nosotros</title>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyAgRL3rzIhIUYD9M0D_MpLFTkZ6BZLtzp0",
-        authDomain: "cafeduoc2020.firebaseapp.com",
-        databaseURL: "https://cafeduoc2020.firebaseio.com",
-        projectId: "cafeduoc2020",
-        storageBucket: "cafeduoc2020.appspot.com",
-        messagingSenderId: "327542197525",
-        appId: "1:327542197525:web:253fa84115d26398732d1c"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-
-      let messaging = firebase.messaging();
-
-      navigator.serviceWorker
-      .register('./serviceworker.js')
-      .then(function(register){
-
-        messaging.useServiceWorker(register);
-
-        //solicitamos permiso para recibir notificaciones
-        messaging.requestPermission()
-        .then(function(){
-          console.log("El usuario ha aceptado recibir notificaciones")
-          return messaging.getToken();
-        })
-        .then(function(token){
-          console.log(token);
-        })
-        .catch(function(e){
-          console.log("El usuario no ha aceptado")
-        })
-      })
-
-      messaging.onMessage(function(payload){
-        let title ='titulo de la notificacion';
-        let options = {
-          body: 'este es el mensaje',
-          icon: '/static/core/IMG/logo.png'
-        }
-        let mensaje = new Notification(title, options);
-      });
-
-
-    </script>
-
   </head>
   <style>
   ::selection
@@ -75,10 +20,17 @@
         <div class="menu">
           <nav>
             <img src="{% static 'core/IMG/logo.png' %}" alt="">
-            <link href="{% static 'core/https://fonts.googleapis.com/css2?family=Oswald:wght@400;467&display=swap" rel="stylesheet' %}">
+            <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;467&display=swap" rel="stylesheet">
             <a href="/">INICIO</a>
             <a href="/pagina3">PRODUCTOS</a>
             <a href="/pagina4">NOSOTROS</a>
+            {% if user.is_authenticated %}
+            <a href="#">USUARIO:  {{ user.username }}</a>
+            <a href="{% url 'logout' %}">CERRAR SESIÓN</a>
+            {% else %}
+            <a href="{% url 'login' %}">INICIAR SESIÓN</a>
+            <a href="{% url 'registro_usuario' %}">REGISTRAR</a>
+            {% endif %}
           </nav>
         </div>
       </header>

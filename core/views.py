@@ -84,15 +84,14 @@ def pagina3(request):
         if formulario.is_valid():
             formulario.save()
 
-            dispositivo = FCMDevice.objects.filter(active=True)
-            dispositivo.send_message(
+            dispositivos = FCMDevice.objects.filter(active=True)
+            dispositivos.send_message(
                 title="Cafe agregado !!!",
-                body="Se ha agregado un cafe " + formulario.cleaned_data['nombre_cafe'],
+                body="Se ha agregado un cafe"+ formulario.cleaned_data['nombre_cafe'],
                 icon="/static/core/IMG/logo.png"
             )
             data ['mensaje'] = 'Guardado Correctamente'
-
-
+        #data['form']=formulario
     return render(request,'core/Pagina3.html',data)
 
 

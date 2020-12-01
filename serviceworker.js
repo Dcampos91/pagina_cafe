@@ -48,9 +48,9 @@ firebase.initializeApp(firebaseConfig);
 let messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function(payload){
-  console.log("ha llegado notificacion")
-  let title =payload.notification.title;
-  
+  console.log("Ha llegado notificacion")
+  let title = payload.notification.title;
+
   let options = {
     body: payload.notification.body,
     icon: payload.notification.icon

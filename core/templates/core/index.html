@@ -1,24 +1,19 @@
 {% load static %}
-{% load pwa %}
-{% progressive_web_app_meta %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="{% static '/https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous' %}">
     <link rel="stylesheet" href="{% static 'core/CSS/Style.css' %}">
     <link rel="stylesheet" href="{% static 'core/CSS/bootstrap.min.css' %}">
     <link rel="Icon" href="{% static 'core/IMG/icono.ico' %}">
     <title>CAFETERIA DUOC</title>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
+    {% load pwa %}
+    {% progressive_web_app_meta %}
     <script>
-      // Your web app's Firebase configuration
       var firebaseConfig = {
         apiKey: "AIzaSyAgRL3rzIhIUYD9M0D_MpLFTkZ6BZLtzp0",
         authDomain: "cafeduoc2020.firebaseapp.com",
@@ -76,10 +71,10 @@
         console.log("ha llegado notificacion")
         let data = payload;
         console.log(data);
-        let title =payload.notification.title;
+        let title = payload.notification.title;
         let options = {
-          body: payload.notification.body,
-          icon: payload.notification.icon
+          body:payload.notification.body,
+          icon:payload.notification.icon
         }
         let mensaje = new Notification(title, options);
       });
@@ -98,7 +93,7 @@
         <div class="menu">
           <nav>
             <img src="{% static 'core/IMG/logo.png' %}" alt="">
-            <link href="{% static 'core/https://fonts.googleapis.com/css2?family=Oswald:wght@400;467&display=swap" rel="stylesheet' %}">
+            <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;467&display=swap" rel="stylesheet">
             <a href="/">INICIO</a>
             <a href="/pagina3">PRODUCTOS</a>
             <a href="/pagina4">NOSOTROS</a>
